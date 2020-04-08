@@ -1,12 +1,9 @@
 /*
 Examples
- [5,2,4,4,6,4,4,3],4 = [3,2,4,4,4,4,5,6]
- [4,5,6]=[4,5,6]
- [3,4,5]=[3,4,5]
- [2,3,4] = [2,3,4]
- [1] = [1]
- []=[]
-*/
+
+[1,0,1,2,1,0,1,2] = [0,0,1,1,1,1,2,2]
+
+ */
 
 function swap(i, j, arr) {
   const temp = arr[i];
@@ -14,19 +11,22 @@ function swap(i, j, arr) {
   arr[j] = temp;
 }
 
-function pivotArray(arr = [], pivot) {
-  if (arr.length === 0 || arr.length == 1) {
-    return arr;
-  }
+export function arrangeMarbles(arr = []) {
+  const COLORS = {
+    RED: 0,
+    WHITE: 1,
+    BLUE: 2,
+  };
+
   let leftBound = 0;
   let rightBound = arr.length - 1;
   let i = 0;
   while (i <= rightBound) {
-    if (arr[i] < pivot) {
+    if (arr[i] === COLORS.RED) {
       swap(i, leftBound, arr);
       leftBound++;
       i++;
-    } else if (arr[i] > pivot) {
+    } else if (arr[i] === COLORS.BLUE) {
       swap(i, rightBound, arr);
       rightBound--;
     } else {
@@ -36,5 +36,3 @@ function pivotArray(arr = [], pivot) {
 
   return arr;
 }
-
-export default { pivotArray };
