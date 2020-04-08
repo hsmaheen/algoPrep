@@ -1,0 +1,24 @@
+{
+  "name": "interviewcamp",
+  "version": "1.0.0",
+  "description": "Interview Camp Solutions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "keywords": [
+    "interview",
+    "camp"
+  ],
+  "author": "Maheen",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^25.2.7"
+  },
+  "dependencies": {
+    "esm": "^3.2.25",
+    "jest-esm-transformer": "^1.0.0"
+  }
+}
