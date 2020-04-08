@@ -5,7 +5,6 @@ test('Must return correct sum', () => {
   const targetSum = 8;
   const expected = [2, 6];
   const sum = twoSum(arr, targetSum);
-  console.log('sum', sum);
 
   expect(twoSum(arr, targetSum)).toStrictEqual(expected);
 });
@@ -15,7 +14,6 @@ test('Must return null', () => {
   const targetSum = 8;
   const expected = null;
   const sum = twoSum(arr, targetSum);
-  console.log('sum', sum);
 
   expect(twoSum(arr, targetSum)).toStrictEqual(expected);
 });
@@ -25,7 +23,6 @@ test('Must return null when 1 value is there', () => {
   const targetSum = 8;
   const expected = null;
   const sum = twoSum(arr, targetSum);
-  console.log('sum', sum);
 
   expect(twoSum(arr, targetSum)).toStrictEqual(expected);
 });
