@@ -23,3 +23,9 @@ test('should return the sum as null', () => {
   const expected = null;
   expect(kadaneAlgo(arr)).toBe(expected);
 });
+
+test('should return the sum as 5', () => {
+  const arr = [-4, -3, -2, 1, 4, 0];
+  const expected = 5;
+  expect(kadaneAlgo(arr)).toBe(expected);
+});

@@ -5,7 +5,6 @@
 
  */
 
-kadaneAlgo(null);
 export function kadaneAlgo(arr = []) {
   if (arr === null) {
     return null;

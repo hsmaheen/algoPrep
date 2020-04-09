@@ -1,10 +1,11 @@
 /*
 Example
 [-4,-2,-1,0,3,5] = [0,1,4,9,16,25]
-[-5,-1,0,5,6]=[0,1,25,25,36]
+[-5,-1,0,5,6]=[0, 1, 25, 25, 36]
 */
 
 //Code
+console.log(squareSum([-4, -2, -1, 0, 3, 5]));
 function squareSum(arr = []) {
   if (arr.length === 0) {
     return arr;
