@@ -8,7 +8,9 @@
     "test:watch": "jest --watchAll"
   },
   "husky": {
-    "pre-push": "npm test"
+    "hooks": {
+      "pre-push": "npm test"
+    }
   },
   "keywords": [
     "interview",
