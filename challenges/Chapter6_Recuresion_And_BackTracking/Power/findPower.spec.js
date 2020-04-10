@@ -66,7 +66,7 @@ test('should find the -ve power of -ve number of 3^-4', () => {
 test('should find the -ve power of -ve number of 3^-4', () => {
   const x = -2;
   const n = -3;
-  const expectedVal = -0.125;
+  const expectedVal = 0.125;
   expect(findPower(x, n)).toBe(expectedVal);
 });
 
