@@ -5,7 +5,6 @@ Example
 */
 
 //Code
-console.log(squareSum([-4, -2, -1, 0, 3, 5]));
 function squareSum(arr = []) {
   if (arr.length === 0) {
     return arr;
