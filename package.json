@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll",
-    "precommit": "npm run test",
-    "prepush": "npm run test"
+    "test:watch": "jest --watchAll"
+  },
+  "husky": {
+    "pre-push": "npm test"
   },
   "keywords": [
     "interview",
