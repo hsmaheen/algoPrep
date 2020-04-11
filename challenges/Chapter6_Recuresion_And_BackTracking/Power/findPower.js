@@ -38,6 +38,9 @@ function slowFindPower(x, power) {
   const result = positivePower(Math.abs(x), Math.abs(power));
 
   if (power < 1) {
+    if (power % 2 !== 0) {
+      return -1 / result;
+    }
     return 1 / result;
   }
 
