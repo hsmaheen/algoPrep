@@ -1,6 +1,6 @@
 {
   "name": "interviewcamp",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Interview Camp Solutions",
   "main": "index.js",
   "scripts": {
