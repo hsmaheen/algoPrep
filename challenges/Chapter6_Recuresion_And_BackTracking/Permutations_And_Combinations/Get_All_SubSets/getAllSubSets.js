@@ -3,13 +3,13 @@ Examples
 [1,2,3,4,5,6,7], 3 = [1,2,3] ,[1,2,4]....[1,2,7]
  */
 
-export function getAllCombinations(arr = [], size) {
-  if (arr.length === 0 || size > arr.length) {
+export function getAllSubSets(arr = []) {
+  if (arr.length === 0) {
     return null;
   }
 
   let resArr = [];
-  bufferHelper(arr, [], 0, 0, size, resArr);
+  bufferHelper(arr, [], 0, 0, arr.length, resArr);
   return resArr;
 }
 function bufferHelper(
@@ -21,8 +21,9 @@ function bufferHelper(
   resArr
 ) {
   //termination cases
+  resArr.push(buffer.slice(0, buffIdx));
   if (buffIdx === buffSize) {
-    return buffer;
+    return;
   }
 
   if (startIdx === arr.length) {
@@ -33,11 +34,9 @@ function bufferHelper(
     //place item into buffer
     buffer[buffIdx] = arr[i];
     //recurse
-    const res = bufferHelper(arr, buffer, buffIdx + 1, i + 1, buffSize, resArr);
-    if (res !== undefined) {
-      resArr.push(res.slice());
-    }
+    bufferHelper(arr, buffer, buffIdx + 1, i + 1, buffSize, resArr);
+    // if (res !== undefined) {
+    //   resArr.push(res.slice());
+    // }
   }
 }
-
-getAllCombinations([1, 2, 3], 3);
