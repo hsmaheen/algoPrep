@@ -18,6 +18,9 @@ const WORD_IN_NUMBER = {
 };
 
 export function getAllWordsInPhoneNumber(numbers = []) {
+  if (numbers.length === 0) {
+    return [];
+  }
   const resArr = [];
   getAllWordsHelper(numbers, [], 0, 0, numbers.length, resArr);
   return resArr;
@@ -41,7 +44,18 @@ function getAllWordsHelper(
   const charArr = WORD_IN_NUMBER[numbers[startIdx]];
 
   if (charArr.length === 0) {
-    getAllWordsHelper(numbers, buffer, startIdx + 1, buffIdx, size, resArr);
+    const res = getAllWordsHelper(
+      numbers,
+      buffer,
+      startIdx + 1,
+      buffIdx,
+      size,
+      resArr
+    );
+
+    if (res != undefined) {
+      resArr.push(res.slice());
+    }
   }
   for (let i = 0; i < charArr.length; i++) {
     buffer[buffIdx] = charArr[i];
