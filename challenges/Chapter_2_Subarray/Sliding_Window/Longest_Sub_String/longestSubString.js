@@ -13,8 +13,8 @@ export function getLongestSubString(word = '') {
   let start = 0;
   let end = 0;
   let charMap = new Map();
-  let longest = 1;
-  let arr = [0, 1];
+  let longest = 0;
+  let arr = [0, 0];
 
   charMap.set(word[0], 0);
 
@@ -24,12 +24,12 @@ export function getLongestSubString(word = '') {
     const currChar = word[end];
 
     if (charMap.has(word[end])) {
-      start = Math.max(start, charMap.get(currChar));
+      start = Math.max(start, charMap.get(currChar) + 1);
     }
 
     if (end - start + 1 > longest) {
       longest = end - start + 1;
-      arr[0] = start + 1;
+      arr[0] = start;
       arr[1] = end;
     }
 
