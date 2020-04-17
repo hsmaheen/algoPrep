@@ -26,12 +26,12 @@ function checkOutOfBound(arr, i, j) {
 
 function findIfPathExists(maze, i, j, memo = new Map()) {
   const memoKey = `${i}${j}`;
-  if (!checkOutOfBound(maze, i, j) || maze[i][j] == 1) {
-    return false;
-  }
 
   if (i === maze.length - 1 && j === maze[0].length - 1) {
     return true;
+  }
+  if (!checkOutOfBound(maze, i, j) || maze[i][j] == 1) {
+    return false;
   }
 
   if (memo.has(memoKey)) {

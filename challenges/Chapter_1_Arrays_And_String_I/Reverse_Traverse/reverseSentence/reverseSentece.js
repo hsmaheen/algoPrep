@@ -8,7 +8,6 @@ Examples
 //Code
 //Technique used - Reverse Traverse
 function reverseSentence(sent = '') {
-  //Base case
   if (sent === '' || sent.length === 1) {
     return sent;
   }

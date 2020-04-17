@@ -5,7 +5,7 @@ function twoSum(arr = [], tSum) {
   let start = 0;
   let end = arr.length - 1;
 
-  while (start < end) {
+  while (start <= end) {
     const sum = arr[start] + arr[end];
 
     if (sum < tSum) {
