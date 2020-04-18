@@ -33,3 +33,17 @@ test('should return "hi" all hi is the longest', () => {
   const arr = getLongestSubString(word);
   expect(word.substring(arr[0], arr[1] + 1)).toBe(expected);
 });
+
+test('should return "hi" all hi is the longest', () => {
+  const word = 'hhhhhhhhhhhhhhi';
+  const expected = 'hi';
+  const arr = getLongestSubString(word);
+  expect(word.substring(arr[0], arr[1] + 1)).toBe(expected);
+});
+
+test('should return "hi" all hi is the longest', () => {
+  const word = 'l';
+  const expected = 'l';
+  const arr = getLongestSubString(word);
+  expect(word.substring(arr[0], arr[1] + 1)).toBe(expected);
+});

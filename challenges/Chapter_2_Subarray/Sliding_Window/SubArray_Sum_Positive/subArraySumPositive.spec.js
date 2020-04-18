@@ -16,8 +16,15 @@ test('should return null when sum does not exits', () => {
 
 test('should return the correct sum when array size is 7', () => {
   const arr = [5, 3, 1, 7, 6, 4, 2];
-  const targetSum = 14;
-  const expected = [2, 4];
+  const targetSum = 2;
+  const expected = [6, 6];
+  expect(getSubArraySum(arr, targetSum)).toStrictEqual(expected);
+});
+
+test('should return the correct sum when array size is 7', () => {
+  const arr = [3];
+  const targetSum = 3;
+  const expected = [0, 0];
   expect(getSubArraySum(arr, targetSum)).toStrictEqual(expected);
 });
 

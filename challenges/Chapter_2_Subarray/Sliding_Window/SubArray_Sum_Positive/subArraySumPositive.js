@@ -11,7 +11,7 @@ export function getSubArraySum(arr = [], tSum) {
   let end = 0;
   let sum = arr[0];
 
-  while (start < arr.length) {
+  while (end < arr.length) {
     if (start > end) {
       end = start;
       sum = arr[start];
