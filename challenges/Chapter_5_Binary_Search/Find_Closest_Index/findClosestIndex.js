@@ -4,7 +4,6 @@ Examples
 A = [1,2,4,5,7,8,9], Target = 6 -> Output Index = 3 or 4
 */
 
-//console.log(getIndexOfSort([1, 2, 21, 27, 30, 40], 25));
 export function findClosestIndex(arr = [], target) {
   if (arr.length === 0 || arr === null) {
     return null;
