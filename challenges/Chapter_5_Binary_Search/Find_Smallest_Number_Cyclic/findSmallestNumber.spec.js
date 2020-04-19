@@ -19,3 +19,8 @@ test('should return the smallest num idx when arr size is 5', () => {
   const arr = [2, 1];
   expect(findSmallest(arr)).toBe(1);
 });
+
+test('should return the smallest num idx when arr has -ve numbers', () => {
+  const arr = [1, 2, -2, -1, 0];
+  expect(findSmallest(arr)).toBe(2);
+});
