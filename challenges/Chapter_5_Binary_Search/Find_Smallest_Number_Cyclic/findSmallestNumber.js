@@ -5,7 +5,6 @@ Examples
 [1,2,4,6,7,8] = 0
 [2,4,6,7,8,1] = 5
 */
-
 export function findSmallest(arr = []) {
   if (arr.length === 0 || arr === null) {
     return null;
