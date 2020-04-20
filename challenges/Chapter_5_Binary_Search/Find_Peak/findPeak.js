@@ -3,6 +3,7 @@ A = [1,3,4,5,2] => Peak = 5
 A = [5,3,1] => Peak = 5
 A = [1,3,5] => Peak = 5
  */
+findPeak([10, 20, 15, 2, 23, 90, 67]);
 export function findPeak(arr = []) {
   if (arr.length === 0) {
     return null;
