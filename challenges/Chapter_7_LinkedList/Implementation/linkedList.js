@@ -23,14 +23,3 @@ export class LinkedList {
     return null;
   }
 }
-
-// const l = new LinkedList();
-// const nodeA = new Node('A');
-// const nodeB = new Node('B');
-// const nodeC = new Node('C');
-// nodeA.next = nodeB;
-// nodeB.next = nodeC;
-
-// l.head = nodeA;
-
-// l.getAt(1);
