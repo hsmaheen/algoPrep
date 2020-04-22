@@ -46,4 +46,14 @@ export class LinkedList {
       this.head = node;
     }
   }
+
+  convertListToArray() {
+    let node = this.head;
+    let arr = [];
+    while (node) {
+      arr.push(node.data);
+      node = node.next;
+    }
+    return arr;
+  }
 }
