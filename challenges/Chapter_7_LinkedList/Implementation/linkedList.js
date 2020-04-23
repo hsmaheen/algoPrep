@@ -47,6 +47,21 @@ export class LinkedList {
     }
   }
 
+  deleteAt(idx) {
+    if (!this.head) {
+      return;
+    }
+    if (idx === 0) {
+      this.head = this.head.next;
+    }
+
+    const prevNode = this.getAt(idx - 1);
+    if (!prevNode || !prevNode.next) {
+      return;
+    }
+    prevNode.next = prevNode.next.next;
+  }
+
   convertListToArray() {
     let node = this.head;
     let arr = [];
