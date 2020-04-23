@@ -62,6 +62,23 @@ export class LinkedList {
     prevNode.next = prevNode.next.next;
   }
 
+  deleteWithoutPrev(idx) {
+    if (!this.head) {
+      return;
+    }
+    if (idx === 0) {
+      this.head = this.head.next;
+    }
+
+    let nodeToDelete = this.getAt(idx);
+    if (!nodeToDelete || !nodeToDelete.next) {
+      return;
+    }
+
+    nodeToDelete.data = nodeToDelete.next.data;
+    nodeToDelete.next = nodeToDelete.next.next;
+  }
+
   convertListToArray() {
     let node = this.head;
     let arr = [];
