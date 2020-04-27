@@ -13,7 +13,7 @@ export function getLongestSubString(word = '') {
   let start = 0;
   let end = 1;
   let charMap = new Map();
-  let longest = 0;
+  let longest = 1;
   let arr = [0, 0];
 
   charMap.set(word[0], 0);
