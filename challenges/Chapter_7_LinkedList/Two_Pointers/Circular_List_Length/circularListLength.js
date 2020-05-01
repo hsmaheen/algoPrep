@@ -22,10 +22,10 @@ export function getCircularListLength(list = new LinkedList()) {
   }
 
   let counter = 1;
-  fast = fast.next;
-  while (fast != slow) {
+  slow = slow.next;
+  while (slow !== fast) {
     counter++;
-    fast = fast.next;
+    slow = slow.next;
   }
   return counter;
 }
