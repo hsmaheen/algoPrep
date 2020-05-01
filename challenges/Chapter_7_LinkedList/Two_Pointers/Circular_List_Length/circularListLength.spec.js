@@ -1,8 +1,8 @@
 import { getCircularListLength } from './circularListLength';
 import { LinkedList } from '../../Implementation/linkedList';
 
-describe('Is LinkedList Circular function should work', () => {
-  test('should return true for a circular linked list', () => {
+describe('Linked List circular length function should work', () => {
+  test('should return the correct length for a circular list of length 3', () => {
     const cList = new LinkedList();
     cList.append(3);
     cList.append(4);
@@ -26,7 +26,7 @@ describe('Is LinkedList Circular function should work', () => {
     expect(getCircularListLength(lList)).toBe(-1);
   });
 
-  test('should return true for a circular linked list of length 1', () => {
+  test('should return the correct length for a circular list of length 1', () => {
     const cList = new LinkedList();
     cList.append(3);
     const last = cList.getLast();
