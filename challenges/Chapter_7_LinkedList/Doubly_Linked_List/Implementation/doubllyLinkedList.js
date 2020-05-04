@@ -115,22 +115,22 @@ export class DoublyLinkedList {
 
   insertAt(idx, data) {
     const newNode = new Node(data);
-    if (data === undefined) {
+    if (data === undefined || idx > this.length) {
       return false;
     }
-
     if (idx === 0) {
-      this.head = newNode;
-      this.tail = newNode;
+      this.addHead(data);
+      return true;
+    } else if (idx === this.length) {
+      this.append(data);
+      return true;
     } else {
       const prevNode = this.getAt(idx - 1);
-      if (prevNode === null) {
-        return false;
-      }
       newNode.next = prevNode.next;
       newNode.prev = prevNode;
       prevNode.next = newNode;
+      this.length++;
+      return true;
     }
-    this.length++;
   }
 }
