@@ -71,4 +71,33 @@ export class DoublyLinkedList {
     }
     this.length++;
   }
+
+  getAt(idx) {
+    if (idx < 0 || idx >= this.length) {
+      return null;
+    }
+    if (idx < this.length / 2) {
+      let currNode = this.head;
+      let counter = 0;
+      while (currNode) {
+        if (counter === idx) {
+          return currNode;
+        }
+        currNode = currNode.next;
+        counter++;
+      }
+      return null;
+    } else {
+      let counter = this.length - 1;
+      let currNode = this.tail;
+      while (currNode) {
+        if (counter === idx) {
+          return currNode;
+        }
+        counter--;
+        currNode = currNode.prev;
+      }
+      return null;
+    }
+  }
 }

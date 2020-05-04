@@ -130,4 +130,70 @@ describe('Doubly Linked List Implementation should work', () => {
     expect(dll.tail.data).toBe(1);
     expect(dll.head.prev).toBe(null);
   });
+
+  describe('Get At Function should work as expected', () => {
+    test('should return null when size is 0', () => {
+      const dll = new DoublyLinkedList();
+      expect(dll.getAt(1)).toBe(null);
+    });
+  });
+
+  describe('Get At Function should work as expected', () => {
+    test('should return null when size is 0', () => {
+      const dll = new DoublyLinkedList();
+      expect(dll.getAt(1)).toBe(null);
+    });
+
+    test('should return the node idx > length/2', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+      const node = dll.getAt(6);
+      expect(node.data).toBe(7);
+    });
+
+    test('should return the node idx < length/2', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+      const node = dll.getAt(2);
+      expect(node.data).toBe(3);
+    });
+
+    test('should return null idx is < 0', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+      const node = dll.getAt(-1);
+      expect(node).toBe(null);
+    });
+
+    test('should return null idx is > length', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+      const node = dll.getAt(10);
+      expect(node).toBe(null);
+    });
+  });
 });
