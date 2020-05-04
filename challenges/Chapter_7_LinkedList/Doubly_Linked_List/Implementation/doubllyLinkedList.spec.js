@@ -95,6 +95,7 @@ describe('Doubly Linked List Implementation should work', () => {
     dll.append(3);
     dll.removeHead();
     expect(dll.head.data).toBe(2);
+    expect(dll.head.prev).toBe(null);
     expect(dll.head.next.data).toBe(3);
     expect(dll.length).toBe(2);
   });

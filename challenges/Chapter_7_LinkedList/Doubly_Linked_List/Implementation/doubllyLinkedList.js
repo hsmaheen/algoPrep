@@ -43,6 +43,7 @@ export class DoublyLinkedList {
   }
 
   removeHead() {
+    const oldHead = this.head;
     if (!this.head) {
       return;
     }
@@ -51,9 +52,10 @@ export class DoublyLinkedList {
       this.head = null;
       this.tail = null;
     } else {
-      const nodeToRemove = this.head;
-      this.head = nodeToRemove.next;
+      this.head = oldHead.next;
+      this.head.prev = null;
     }
+    oldHead.prev = null;
     this.length--;
   }
 }
