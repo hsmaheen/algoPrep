@@ -60,4 +60,42 @@ describe('Doubly Linked List Implementation should work', () => {
     expect(dll.tail.data).toBe(3);
     expect(dll.tail.next).toBe(null);
   });
+
+  test('removeHead function works with empty list', () => {
+    const dll = new DoublyLinkedList();
+    dll.removeHead();
+    expect(dll.length).toBe(0);
+    expect(dll.tail).toBe(null);
+    expect(dll.head).toBe(null);
+  });
+
+  test('removeHead function works with list has only one element', () => {
+    const dll = new DoublyLinkedList();
+    dll.append(1);
+    dll.removeHead();
+    expect(dll.length).toBe(0);
+    expect(dll.tail).toBe(null);
+    expect(dll.head).toBe(null);
+  });
+
+  test('removeHead function works with list has only more than one element', () => {
+    const dll = new DoublyLinkedList();
+    dll.append(1);
+    dll.append(2);
+    dll.removeHead();
+    expect(dll.head.data).toBe(2);
+    expect(dll.tail.data).toBe(2);
+    expect(dll.length).toBe(1);
+  });
+
+  test('removeHead function works with list has three elements', () => {
+    const dll = new DoublyLinkedList();
+    dll.append(1);
+    dll.append(2);
+    dll.append(3);
+    dll.removeHead();
+    expect(dll.head.data).toBe(2);
+    expect(dll.head.next.data).toBe(3);
+    expect(dll.length).toBe(2);
+  });
 });
