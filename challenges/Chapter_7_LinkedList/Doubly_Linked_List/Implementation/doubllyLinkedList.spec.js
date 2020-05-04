@@ -238,4 +238,43 @@ describe('Doubly Linked List Implementation should work', () => {
       expect(res).toBe(false);
     });
   });
+
+  describe('Insert At function Should work as expected', () => {
+    test('should insert the data at head when list is empty', () => {
+      const dll = new DoublyLinkedList();
+      dll.insertAt(0, 1);
+      expect(dll.head.data).toBe(1);
+      expect(dll.tail.data).toBe(1);
+    });
+
+    test('should return true when data and idx are correct', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+
+      dll.insertAt(2, 11);
+      const res = dll.getAt(2);
+      expect(res.data).toBe(11);
+      expect(res.prev.data).toBe(2);
+      expect(res.next.data).toBe(3);
+    });
+
+    test('should return false when idx is greater than the length', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+      const res = dll.insertAt(19, 9);
+      expect(res).toBe(false);
+    });
+  });
 });
