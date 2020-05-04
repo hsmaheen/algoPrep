@@ -100,4 +100,16 @@ export class DoublyLinkedList {
       return null;
     }
   }
+
+  set(idx, data) {
+    if (data === undefined) {
+      return false;
+    }
+    const nodeToSet = this.getAt(idx);
+    if (nodeToSet !== null) {
+      nodeToSet.data = data;
+      return true;
+    }
+    return false;
+  }
 }

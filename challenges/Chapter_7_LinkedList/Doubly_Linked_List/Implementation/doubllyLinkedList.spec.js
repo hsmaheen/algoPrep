@@ -138,7 +138,7 @@ describe('Doubly Linked List Implementation should work', () => {
     });
   });
 
-  describe('Get At Function should work as expected', () => {
+  describe('Get At function Should work as expected', () => {
     test('should return null when size is 0', () => {
       const dll = new DoublyLinkedList();
       expect(dll.getAt(1)).toBe(null);
@@ -194,6 +194,48 @@ describe('Doubly Linked List Implementation should work', () => {
       dll.append(7);
       const node = dll.getAt(10);
       expect(node).toBe(null);
+    });
+  });
+
+  describe('Set function Should work as expected', () => {
+    test('should return false when node data is undefined', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+      const res = dll.set(6);
+      expect(res).toBe(false);
+    });
+
+    test('should return true when data and idx are correct', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+      const res = dll.set(6, 9);
+      expect(res).toBe(true);
+      expect(dll.tail.data).toBe(9);
+    });
+
+    test('should return false when idx is greater than the length', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+      const res = dll.set(19, 9);
+      expect(res).toBe(false);
     });
   });
 });
