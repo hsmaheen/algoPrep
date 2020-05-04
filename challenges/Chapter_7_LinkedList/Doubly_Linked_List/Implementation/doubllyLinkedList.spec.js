@@ -99,4 +99,35 @@ describe('Doubly Linked List Implementation should work', () => {
     expect(dll.head.next.data).toBe(3);
     expect(dll.length).toBe(2);
   });
+
+  test('addHead function works with list that has 0 elements', () => {
+    const dll = new DoublyLinkedList();
+    dll.addHead(1);
+    expect(dll.head.data).toBe(1);
+    expect(dll.head.prev).toBe(null);
+    expect(dll.head.next).toBe(null);
+    expect(dll.tail.data).toBe(1);
+    expect(dll.tail.next).toBe(null);
+  });
+
+  test('addHead function works with list that has 1 element', () => {
+    const dll = new DoublyLinkedList();
+    dll.addHead(1);
+    dll.addHead(2);
+    expect(dll.head.data).toBe(2);
+    expect(dll.tail.data).toBe(1);
+    expect(dll.head.prev).toBe(null);
+  });
+
+  test('addHead function works with list that has 2 elements', () => {
+    const dll = new DoublyLinkedList();
+    dll.addHead(1);
+    dll.addHead(2);
+    dll.addHead(3);
+    expect(dll.head.data).toBe(3);
+    expect(dll.head.next.data).toBe(2);
+    expect(dll.tail.prev.data).toBe(2);
+    expect(dll.tail.data).toBe(1);
+    expect(dll.head.prev).toBe(null);
+  });
 });
