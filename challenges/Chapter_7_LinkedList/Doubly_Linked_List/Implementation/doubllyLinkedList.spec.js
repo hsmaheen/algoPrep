@@ -298,4 +298,61 @@ describe('Doubly Linked List Implementation should work', () => {
       expect(dll.length).toBe(7);
     });
   });
+
+  describe('Remove At function Should work as expected', () => {
+    test('should return null when list is empty', () => {
+      const dll = new DoublyLinkedList();
+      dll.removeAt(1);
+      expect(dll.head).toBe(null);
+      expect(dll.tail).toBe(null);
+      expect(dll.length).toBe(0);
+    });
+
+    test('should return true when data and idx are correct', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+
+      dll.removeAt(2);
+      const res = dll.getAt(2);
+      expect(res.data).toBe(4);
+      expect(res.prev.data).toBe(2);
+      expect(res.next.data).toBe(5);
+      expect(dll.length).toBe(6);
+    });
+
+    test('should return false when idx = length', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+
+      const res = dll.removeAt(7);
+      expect(res).toBe(false);
+      expect(dll.length).toBe(7);
+    });
+
+    test('should return false when idx is greater than the length', () => {
+      const dll = new DoublyLinkedList();
+      dll.append(1);
+      dll.append(2);
+      dll.append(3);
+      dll.append(4);
+      dll.append(5);
+      dll.append(6);
+      dll.append(7);
+      const res = dll.removeAt(19);
+      expect(res).toBe(false);
+      expect(dll.length).toBe(7);
+    });
+  });
 });

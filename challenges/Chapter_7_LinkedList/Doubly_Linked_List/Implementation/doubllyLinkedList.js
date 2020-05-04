@@ -126,11 +126,42 @@ export class DoublyLinkedList {
       return true;
     } else {
       const prevNode = this.getAt(idx - 1);
-      newNode.next = prevNode.next;
+      const aftNode = prevNode.next;
+
+      newNode.next = aftNode;
       newNode.prev = prevNode;
+
       prevNode.next = newNode;
+      aftNode.prev = newNode;
+
       this.length++;
       return true;
     }
+  }
+
+  removeAt(idx) {
+    if (idx < 0 || idx >= this.length) {
+      return false;
+    }
+
+    if (idx === 0) {
+      this.removeHead();
+    }
+
+    if (idx === this.length - 1) {
+      this.removeTail;
+    }
+
+    const nodeToRemove = this.getAt(idx);
+    const prevNode = nodeToRemove.prev;
+    const aftNode = nodeToRemove.next;
+
+    prevNode.next = aftNode;
+    aftNode.prev = prevNode;
+
+    nodeToRemove.next = null;
+    nodeToRemove.prev = null;
+    this.length--;
+    return true;
   }
 }
