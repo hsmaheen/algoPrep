@@ -1,4 +1,4 @@
-import { DoublyLinkedList, Node } from './doubllyLinkedList';
+import { DoublyLinkedList, Node } from './doublyLinkedList';
 
 describe('Doubly Linked List Implementation should work', () => {
   test('List is a class', () => {
