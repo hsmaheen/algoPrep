@@ -25,6 +25,17 @@ export class LinkedList {
     return null;
   }
 
+  addToHead(data) {
+    const newNode = new Node(data);
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+  }
+
   getLast() {
     return this.tail;
   }
