@@ -8,20 +8,17 @@ describe('Get Last Implementation should work', () => {
 
   test('Should return the last node correctly ', () => {
     const l1 = new LinkedList();
-    const nodeA = new Node('A');
-    const nodeB = new Node('B');
-    const nodeC = new Node('C');
-    nodeA.next = nodeB;
-    nodeB.next = nodeC;
+    l1.append('A');
+    l1.append('B');
+    l1.append('C');
 
-    l1.head = nodeA;
-    expect(l1.getLast()).toBe(nodeC);
+    expect(l1.getLast().data).toBe('C');
   });
 
   test('Should return head node when there is only one node ', () => {
     const l1 = new LinkedList();
-    const nodeA = new Node('A');
-    l1.head = nodeA;
-    expect(l1.getLast()).toBe(nodeA);
+    l1.append('A');
+    expect(l1.getLast().data).toBe('A');
+    expect(l1.getLast().next).toBe(null);
   });
 });

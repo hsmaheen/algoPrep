@@ -44,7 +44,18 @@ function appendList(original = new LinkedList(), listToAdd = new LinkedList()) {
   const last = original.getLast();
   if (last) {
     last.next = listToAdd.head;
+    original.tail = listToAdd.tail;
   } else {
     original.head = listToAdd.head;
+    original.tail = listToAdd.tail;
   }
 }
+
+const list = new LinkedList();
+list.append(1);
+list.append(0);
+list.append(2);
+list.append(2);
+list.append(1);
+list.append(0);
+sortLinkedList(list);

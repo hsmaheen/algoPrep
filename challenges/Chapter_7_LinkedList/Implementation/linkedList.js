@@ -8,6 +8,8 @@ export class Node {
 export class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
+    this.length = 0;
   }
 
   getAt(index) {
@@ -24,27 +26,19 @@ export class LinkedList {
   }
 
   getLast() {
-    if (!this.head) {
-      return null;
-    }
-
-    let node = this.head;
-    while (node) {
-      if (node.next === null) {
-        return node;
-      }
-      node = node.next;
-    }
+    return this.tail;
   }
 
   append(data) {
-    const node = new Node(data);
-    const last = this.getLast();
-    if (last) {
-      last.next = node;
+    const newNode = new Node(data);
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = this.head;
     } else {
-      this.head = node;
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
+    this.length++;
   }
 
   deleteAt(idx) {
@@ -60,6 +54,7 @@ export class LinkedList {
       return;
     }
     prevNode.next = prevNode.next.next;
+    this.length--;
   }
 
   deleteWithoutPrev(idx) {
@@ -77,6 +72,7 @@ export class LinkedList {
 
     nodeToDelete.data = nodeToDelete.next.data;
     nodeToDelete.next = nodeToDelete.next.next;
+    this.length--;
   }
 
   convertListToArray() {
