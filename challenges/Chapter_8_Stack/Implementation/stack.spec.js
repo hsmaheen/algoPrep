@@ -84,4 +84,53 @@ describe('Stack Implementation should work', () => {
       expect(node.data).toBe(4);
     });
   });
+
+  describe('Stack peek implementation should work', () => {
+    test('peek should work with 0 elements', () => {
+      const stack = new Stack();
+      stack.push(1);
+      const node = stack.peek();
+      expect(stack.head.data).toBe(1);
+      expect(stack.length).toBe(1);
+      expect(stack.tail.data).toBe(1);
+      expect(node.data).toBe(1);
+    });
+
+    test('peek should work with 2 element', () => {
+      const stack = new Stack();
+      stack.push(1);
+      stack.push(2);
+      const node = stack.peek();
+      expect(stack.head.data).toBe(2);
+      expect(stack.length).toBe(2);
+      expect(stack.tail.data).toBe(1);
+      expect(node.data).toBe(2);
+    });
+
+    test('peek should work with 3 element', () => {
+      const stack = new Stack();
+      stack.push(1);
+      stack.push(2);
+      stack.push(3);
+      const node = stack.peek();
+      expect(stack.head.data).toBe(3);
+      expect(stack.length).toBe(3);
+      expect(stack.tail.data).toBe(1);
+      expect(node.data).toBe(3);
+    });
+
+    test('peek should work with 4 element', () => {
+      const stack = new Stack();
+      stack.push(1);
+      stack.push(2);
+      stack.push(3);
+      stack.push(4);
+      const node = stack.peek();
+      expect(stack.head.data).toBe(4);
+      expect(stack.length).toBe(4);
+      expect(stack.tail.data).toBe(1);
+      expect(stack.head.next.data).toBe(3);
+      expect(node.data).toBe(4);
+    });
+  });
 });

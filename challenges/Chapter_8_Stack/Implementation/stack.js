@@ -42,4 +42,12 @@ export class Stack {
       return currHead;
     }
   }
+
+  peek() {
+    if (!this.head) {
+      return null;
+    }
+
+    return this.head;
+  }
 }
