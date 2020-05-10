@@ -9,7 +9,7 @@ export function reverseLinkedList(list) {
   let curr = head;
   let newTail = head;
 
-  while (curr != null) {
+  while (curr) {
     const next = curr.next;
     curr.next = prev;
     prev = curr;

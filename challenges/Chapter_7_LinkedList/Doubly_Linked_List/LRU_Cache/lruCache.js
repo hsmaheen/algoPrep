@@ -7,11 +7,11 @@ class ListNode {
   }
 
   removeBindings() {
-    if (this.prev !== null) {
+    if (this.prev) {
       this.prev.next = this.next;
     }
 
-    if (this.next !== null) {
+    if (this.next) {
       this.next.prev = this.prev;
     }
     this.next = null;
@@ -56,7 +56,7 @@ export class LRUCache {
   }
 
   addToHead(node) {
-    if (this.head === null) {
+    if (!this.head) {
       this.head = node;
       this.tail = node;
     } else {
@@ -88,7 +88,7 @@ export class LRUCache {
   }
 
   removeTail() {
-    if (this.head === null) {
+    if (!this.head) {
       return;
     }
     if (this.length === 1) {
