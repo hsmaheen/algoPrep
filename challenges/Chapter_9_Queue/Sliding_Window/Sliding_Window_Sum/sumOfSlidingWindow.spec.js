@@ -1,4 +1,3 @@
-import { Queue } from '../Implementation/queueImplementation';
 import { findSumOfSlidingWindow } from './sumOfSlidingWindow';
 
 describe('Queue, Sliding Window Algo should work', () => {
