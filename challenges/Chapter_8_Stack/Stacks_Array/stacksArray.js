@@ -59,7 +59,7 @@ export class Stacks {
   }
 
   popS2Data() {
-    if (this.stack2Length === 0) {
+    if (this.stack2Length === 0 || this.size === 0) {
       return null;
     }
 
@@ -71,3 +71,14 @@ export class Stacks {
     return s2Data;
   }
 }
+
+const stacks = new Stacks(6);
+stacks.pushS2Data(1);
+stacks.pushS2Data(2);
+stacks.pushS2Data(3);
+stacks.pushS2Data(4);
+stacks.pushS2Data(5);
+stacks.pushS2Data(6);
+const s2Data = stacks.popS2Data();
+const s2Data2 = stacks.popS2Data();
+stacks.pushS2Data(7);
