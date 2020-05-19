@@ -37,6 +37,7 @@ export class Queue {
       this.last = null;
     }
     this.first = this.first.next;
+    this.length--;
     return nodeToRemove;
   }
 }
