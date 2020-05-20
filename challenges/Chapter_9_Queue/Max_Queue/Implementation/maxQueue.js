@@ -1,4 +1,4 @@
-import { Queue } from '../../../Implementation/queueImplementation';
+import { Queue } from '../../Implementation/queueImplementation';
 
 export class MaxQueue {
   constructor() {
