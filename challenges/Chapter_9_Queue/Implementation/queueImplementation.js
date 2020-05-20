@@ -40,4 +40,32 @@ export class Queue {
     this.length--;
     return nodeToRemove;
   }
+
+  removeFromLast() {
+    if (this.length === 0) {
+      return null;
+    }
+
+    const currFirst = this.first;
+    let currNode = null;
+    if (this.length === 1) {
+      currNode = this.dequeue();
+    } else {
+      while (true) {
+        currNode = this.dequeue();
+        if (currFirst.data === this.first.data) {
+          if (!this.first.next) {
+            break;
+          }
+          if (this.first.next.data === currFirst.next.data) {
+            break;
+          }
+        }
+
+        this.enqueue(currNode.data);
+      }
+    }
+
+    return currNode.data;
+  }
 }
