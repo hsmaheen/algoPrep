@@ -6,7 +6,7 @@ test('should pivot array at 4', () => {
   expect(pivotArray(arr, 4)).toStrictEqual(expected);
 });
 
-test('should not change when array is already pivoted at center', () => {
+test('should not change when array is already pivoted at the beginning', () => {
   const arr = [4, 5, 6];
   const expected = [4, 6, 5];
   expect(pivotArray(arr, 4)).toStrictEqual(expected);
@@ -15,6 +15,12 @@ test('should not change when array is already pivoted at center', () => {
 test('should not change when array is already pivoted at end', () => {
   const arr = [2, 3, 4];
   const expected = [2, 3, 4];
+  expect(pivotArray(arr, 4)).toStrictEqual(expected);
+});
+
+test('should pivot correctly when the array has only 2 numbers', () => {
+  const arr = [4, 1];
+  const expected = [1, 4];
   expect(pivotArray(arr, 4)).toStrictEqual(expected);
 });
 
