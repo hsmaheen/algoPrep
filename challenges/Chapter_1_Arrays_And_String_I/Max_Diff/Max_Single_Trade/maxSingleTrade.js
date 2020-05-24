@@ -8,10 +8,7 @@ export function maxInSingleTrade(arr = []) {
   for (let i = 0; i < arr.length; i++) {
     currMin = Math.min(arr[i], currMin);
     const currTrade = arr[i] - currMin;
-
-    if (currTrade > maxTrade) {
-      maxTrade = currTrade;
-    }
+    maxTrade = Math.max(currTrade, maxTrade);
   }
 
   return maxTrade;
