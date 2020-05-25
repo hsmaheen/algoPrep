@@ -25,4 +25,29 @@ describe('Zigzag Algo should work', () => {
     const result = getZigzagElements(arr);
     expect(result).toEqual(expected);
   });
+
+  test('should get the right elements in 2x2 elements', () => {
+    const arr = [
+      [1, 2],
+      [3, 4],
+    ];
+
+    const expected = [1, 2, 3, 4];
+    const result = getZigzagElements(arr);
+    expect(result).toEqual(expected);
+  });
+
+  test('should get the right elements in 2x2 elements', () => {
+    const arr = [[1]];
+    const expected = [1];
+    const result = getZigzagElements(arr);
+    expect(result).toEqual(expected);
+  });
+
+  test('should return null when arr length is 0', () => {
+    const arr = [];
+    const expected = null;
+    const result = getZigzagElements(arr);
+    expect(result).toEqual(expected);
+  });
 });
