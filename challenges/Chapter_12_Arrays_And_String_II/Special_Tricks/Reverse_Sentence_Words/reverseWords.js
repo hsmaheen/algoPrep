@@ -1,7 +1,7 @@
-function swap(start, end, sentence) {
-  const temp = sentence[start];
-  sentence[start] = sentence[end];
-  sentence[end] = temp;
+function swap(start, end, sentArray) {
+  const temp = sentArray[start];
+  sentArray[start] = sentArray[end];
+  sentArray[end] = temp;
 }
 
 export function reverseWordsInSentence(sentence = '') {
