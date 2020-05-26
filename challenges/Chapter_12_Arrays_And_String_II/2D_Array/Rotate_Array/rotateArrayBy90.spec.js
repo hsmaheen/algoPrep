@@ -1,4 +1,4 @@
-import { rotateArray } from './rotateArray';
+import { rotateArray } from './rotateArrayBy90';
 
 describe('Rotate Matrix by 90 degree should work', () => {
   test('should rotate a 3x3 matrix', () => {
