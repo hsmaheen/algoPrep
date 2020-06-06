@@ -38,4 +38,25 @@ export class Graph {
 
     this.adjacencyList.delete(node);
   }
+
+  depthFirstSearch(node) {
+    const visitedNodes = new Map();
+    const result = [];
+    const adjacencyList = this.adjacencyList;
+
+    (function dfs(node) {
+      if (!adjacencyList.has(node)) {
+        return;
+      }
+
+      visitedNodes.set(node, "VISITING");
+      result.push(node);
+      for (const key of adjacencyList.get(node)) {
+        if (!visitedNodes.has(key)) dfs(key);
+      }
+      visitedNodes.set(node, "VISITED");
+    })(node);
+
+    return result;
+  }
 }
