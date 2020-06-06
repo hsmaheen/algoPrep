@@ -5,29 +5,21 @@ export class Graph {
 
   addNode(data) {
     if (!this.adjacencyList.has(data)) {
-      this.adjacencyList.set(data, []);
+      this.adjacencyList.set(data, new Set());
     }
   }
 
   addEdge(originNode, nodeToConnect) {
-    this.adjacencyList.get(originNode).push(nodeToConnect);
-    this.adjacencyList.get(nodeToConnect).push(originNode);
+    this.adjacencyList.get(originNode).add(nodeToConnect);
+    this.adjacencyList.get(nodeToConnect).add(originNode);
   }
 
   removeEdge(originNode, nodeToRemove) {
-    const nodeA = this.adjacencyList.get(originNode);
-    nodeA.filter((n) => n !== nodeToRemove);
+    const originConns = this.adjacencyList.get(originNode);
+    originConns.delete(nodeToRemove);
 
-    this.adjacencyList.set(
-      originNode,
-      nodeA.filter((n) => n !== nodeToRemove)
-    );
-
-    const nodeB = this.adjacencyList.get(nodeToRemove);
-    this.adjacencyList.set(
-      nodeToRemove,
-      nodeB.filter((n) => n !== originNode)
-    );
+    const nodeToRemoveConns = this.adjacencyList.get(nodeToRemove);
+    nodeToRemoveConns.delete(originNode);
   }
 
   removeNode(node) {
@@ -39,7 +31,7 @@ export class Graph {
     this.adjacencyList.delete(node);
   }
 
-  depthFirstSearch(node) {
+  printDFS(node) {
     const visitedNodes = new Map();
     const result = [];
     const adjacencyList = this.adjacencyList;
@@ -58,5 +50,31 @@ export class Graph {
     })(node);
 
     return result;
+  }
+
+  depthFirstSearch(node, target) {
+    const visitedNodes = new Map();
+    const adjacencyList = this.adjacencyList;
+
+    return (function dfs(node, target) {
+      if (!adjacencyList.has(node)) {
+        return false;
+      }
+
+      if (node === target) {
+        return true;
+      }
+
+      visitedNodes.set(node, "VISITING");
+      for (const key of adjacencyList.get(node)) {
+        if (!visitedNodes.has(key)) {
+          if (dfs(key, target) === true) {
+            return true;
+          }
+        }
+      }
+      visitedNodes.set(node, "VISITED");
+      return false;
+    })(node, target);
   }
 }

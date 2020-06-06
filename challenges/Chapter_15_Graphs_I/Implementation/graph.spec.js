@@ -29,8 +29,10 @@ describe("Grpah implementation should work", () => {
     graph.addEdge("India", "Singapore");
     const indiaEdges = graph.adjacencyList.get("India");
     const canadaEdges = graph.adjacencyList.get("Canada");
-    expect(indiaEdges).toEqual(["Canada", "Singapore"]);
-    expect(canadaEdges).toEqual(["India"]);
+    const set = new Set();
+
+    expect([...indiaEdges.values()]).toEqual(["Canada", "Singapore"]);
+    expect([...canadaEdges.values()]).toEqual(["India"]);
   });
 
   it("Should remove edges correctly", () => {
@@ -43,8 +45,8 @@ describe("Grpah implementation should work", () => {
     graph.removeEdge("India", "Canada");
     const indiaEdges = graph.adjacencyList.get("India");
     const canadaEdges = graph.adjacencyList.get("Canada");
-    expect(indiaEdges).toEqual([]);
-    expect(canadaEdges).toEqual([]);
+    expect([...indiaEdges.values()]).toEqual([]);
+    expect([...canadaEdges.values()]).toEqual([]);
   });
 
   it("Should remove nodes correctly", () => {
@@ -59,8 +61,8 @@ describe("Grpah implementation should work", () => {
     graph.removeNode("India");
     const canadaEdges = graph.adjacencyList.get("Canada");
     const singaporeEdges = graph.adjacencyList.get("Singapore");
-    expect(canadaEdges).toEqual(["Singapore"]);
-    expect(singaporeEdges).toEqual(["Canada"]);
+    expect([...canadaEdges.values()]).toEqual(["Singapore"]);
+    expect([...singaporeEdges.values()]).toEqual(["Canada"]);
     expect(graph.adjacencyList.get("India")).toBe(undefined);
   });
 });
