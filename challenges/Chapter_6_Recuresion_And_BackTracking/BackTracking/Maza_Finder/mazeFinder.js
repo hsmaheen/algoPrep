@@ -1,7 +1,7 @@
 const states = {
-  VISITED: 'VISITED',
-  VISITING: 'VISITING',
-  NOT_PATH: 'NO_PATH',
+  VISITED: "VISITED",
+  VISITING: "VISITING",
+  NOT_PATH: "NO_PATH",
 };
 
 export function doesExitPathExist(maze) {
@@ -12,16 +12,16 @@ export function doesExitPathExist(maze) {
   return findIfPathExists(maze, 0, 0, memo);
 }
 
-function checkOutOfBound(arr, i, j) {
+function isOutOfBound(arr, i, j) {
   if (i > arr.length - 1 || i < 0) {
-    return false;
+    return true;
   }
 
   if (j > arr[0].length - 1 || j < 0) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 function findIfPathExists(maze, i, j, memo = new Map()) {
@@ -30,7 +30,7 @@ function findIfPathExists(maze, i, j, memo = new Map()) {
   if (i === maze.length - 1 && j === maze[0].length - 1) {
     return true;
   }
-  if (!checkOutOfBound(maze, i, j) || maze[i][j] == 1) {
+  if (isOutOfBound(maze, i, j) || maze[i][j] == 1) {
     return false;
   }
 
