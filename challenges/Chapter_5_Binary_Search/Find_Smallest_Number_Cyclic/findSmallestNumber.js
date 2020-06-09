@@ -21,7 +21,7 @@ export function findSmallest(arr = []) {
         return mid;
       }
       end = mid - 1;
-    } else if (arr[mid] > right) {
+    } else {
       start = mid + 1;
     }
   }
