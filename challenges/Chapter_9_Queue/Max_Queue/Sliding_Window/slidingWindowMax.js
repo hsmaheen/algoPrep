@@ -1,4 +1,4 @@
-import { MaxQueue } from '../Implementation/maxQueue';
+import { MaxQueue } from "../Implementation/maxQueue";
 
 export function getSlidingWindowMax(arr, windowSize) {
   if (!arr || arr.length === 0) {
@@ -12,16 +12,18 @@ export function getSlidingWindowMax(arr, windowSize) {
     return maxArr;
   }
 
-  for (let i = 0; i <= arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (maxQueue.length() === windowSize) {
       maxArr.push(maxQueue.getMax());
       maxQueue.dequeue();
     }
 
     const curr = arr[i];
-    if (curr) {
-      maxQueue.enqueue(curr);
-    }
+    maxQueue.enqueue(curr);
+  }
+
+  if (maxQueue.length() === windowSize) {
+    maxArr.push(maxQueue.getMax());
   }
 
   return maxArr;
