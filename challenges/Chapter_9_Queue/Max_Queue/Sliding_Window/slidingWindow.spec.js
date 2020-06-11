@@ -5,6 +5,7 @@ describe('Queue, Sliding Window Max Algo should work', () => {
     const arr = [4, 6, 5, 2, 4, 7];
     const windowSize = 3;
     const res = getSlidingWindowMax(arr, windowSize);
+    console.log('TCL: res', res);
     expect(res).toEqual([6, 6, 5, 7]);
   });
 

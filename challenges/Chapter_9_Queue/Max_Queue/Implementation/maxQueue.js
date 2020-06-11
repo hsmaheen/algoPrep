@@ -17,8 +17,8 @@ export class MaxQueue {
       return;
     }
 
-    while (this.maxQueue.length > 0 && this.maxQueue.last.data < data) {
-      this.maxQueue.removeFromLast();
+    while (this.maxQueue.length > 0 && this.maxQueue.first.data < data) {
+      this.maxQueue.dequeue();
     }
 
     this.dataQueue.enqueue(data);
