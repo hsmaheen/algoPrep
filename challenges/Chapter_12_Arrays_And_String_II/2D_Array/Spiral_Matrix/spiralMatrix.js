@@ -12,7 +12,7 @@ export function getSpiralElements(arr) {
 
   let dir = 0;
 
-  while (top <= bottom || top <= right) {
+  while (top <= bottom && left <= right) {
     if (dir === 0) {
       for (let i = left; i <= right; i++) {
         spiralSequence.push(arr[top][i]);
