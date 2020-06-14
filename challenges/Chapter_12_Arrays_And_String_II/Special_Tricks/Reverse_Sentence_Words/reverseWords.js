@@ -37,7 +37,7 @@ function reverseChars(sentArray, start, end) {
     return;
   }
 
-  while (start < end) {
+  while (start <= end) {
     swap(start, end, sentArray);
     start++;
     end--;
