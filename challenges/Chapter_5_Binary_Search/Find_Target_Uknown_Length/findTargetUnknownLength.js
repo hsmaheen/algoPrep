@@ -37,11 +37,9 @@ function findEndOfTheArray(arr) {
   while (start <= end) {
     const mid = start + Math.floor((end - start) / 2);
 
-    if (arr[mid] === undefined && arr[mid - 1] != undefined) {
-      return mid - 1;
-    }
-
     if (arr[mid] === undefined) {
+      if (arr[mid - 1] !== undefined && mid > 0) return mid - 1;
+
       end = mid - 1;
     } else {
       start = mid + 1;
