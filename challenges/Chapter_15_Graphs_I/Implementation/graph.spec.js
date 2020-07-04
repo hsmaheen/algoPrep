@@ -1,68 +1,67 @@
-import { Graph } from "./graph";
+import { Graph } from './graph';
 
-describe("Grpah implementation should work", () => {
-  it("Should add nodes to graph correctly", () => {
+describe('Grpah implementation should work', () => {
+  it('Should add nodes to graph correctly', () => {
     const graph = new Graph();
-    const expectedRes = ["Singapore", "Canada", "India"];
-    graph.addNode("Singapore");
-    graph.addNode("Canada");
-    graph.addNode("India");
-    expect([...graph.adjacencyList.keys()]).toEqual(expectedRes);
+    const expectedRes = ['Singapore', 'Canada', 'India'];
+    graph.addNode('Singapore');
+    graph.addNode('Canada');
+    graph.addNode('India');
+    expect([...graph.nodes.keys()]).toEqual(expectedRes);
   });
 
-  it("Should not add nodes of same name", () => {
+  it('Should not add nodes of same name', () => {
     const graph = new Graph();
-    const expectedRes = ["Singapore", "Canada"];
-    graph.addNode("Singapore");
-    graph.addNode("Canada");
-    graph.addNode("Canada");
-    expect([...graph.adjacencyList.keys()]).toEqual(expectedRes);
+    const expectedRes = ['Singapore', 'Canada'];
+    graph.addNode('Singapore');
+    graph.addNode('Canada');
+    graph.addNode('Canada');
+    expect([...graph.nodes.keys()]).toEqual(expectedRes);
   });
 
-  it("Should  add edges correctly", () => {
+  it('Should  add edges correctly', () => {
     const graph = new Graph();
-    const expectedRes = ["Singapore", "Canada"];
-    graph.addNode("Singapore");
-    graph.addNode("Canada");
-    graph.addNode("India");
-    graph.addEdge("India", "Canada");
-    graph.addEdge("India", "Singapore");
-    const indiaEdges = graph.adjacencyList.get("India");
-    const canadaEdges = graph.adjacencyList.get("Canada");
-    const set = new Set();
+    const expectedRes = ['Singapore', 'Canada'];
+    graph.addNode('Singapore');
+    graph.addNode('Canada');
+    graph.addNode('India');
+    graph.addEdges('India', 'Canada');
+    graph.addEdges('India', 'Singapore');
+    const indiaEdges = graph.nodes.get('India');
+    const canadaEdges = graph.nodes.get('Canada');
 
-    expect([...indiaEdges.values()]).toEqual(["Canada", "Singapore"]);
-    expect([...canadaEdges.values()]).toEqual(["India"]);
+    expect([...indiaEdges.edges.values()]).toEqual(['Canada', 'Singapore']);
+    expect([...canadaEdges.edges.values()]).toEqual(['India']);
   });
 
-  it("Should remove edges correctly", () => {
+  it('Should remove edges correctly', () => {
     const graph = new Graph();
-    const expectedRes = ["Singapore", "Canada"];
-    graph.addNode("Singapore");
-    graph.addNode("Canada");
-    graph.addNode("India");
-    graph.addEdge("India", "Canada");
-    graph.removeEdge("India", "Canada");
-    const indiaEdges = graph.adjacencyList.get("India");
-    const canadaEdges = graph.adjacencyList.get("Canada");
-    expect([...indiaEdges.values()]).toEqual([]);
-    expect([...canadaEdges.values()]).toEqual([]);
+    const expectedRes = ['Singapore', 'Canada'];
+    graph.addNode('Singapore');
+    graph.addNode('Canada');
+    graph.addNode('India');
+    graph.addEdges('India', 'Canada');
+    graph.removeEdge('India', 'Canada');
+    const indiaEdges = graph.nodes.get('India');
+    const canadaEdges = graph.nodes.get('Canada');
+    expect([...indiaEdges.edges.values()]).toEqual([]);
+    expect([...canadaEdges.edges.values()]).toEqual([]);
   });
 
-  it("Should remove nodes correctly", () => {
+  it('Should remove nodes correctly', () => {
     const graph = new Graph();
-    const expectedRes = ["Singapore", "Canada"];
-    graph.addNode("Singapore");
-    graph.addNode("Canada");
-    graph.addNode("India");
-    graph.addEdge("India", "Canada");
-    graph.addEdge("India", "Singapore");
-    graph.addEdge("Singapore", "Canada");
-    graph.removeNode("India");
-    const canadaEdges = graph.adjacencyList.get("Canada");
-    const singaporeEdges = graph.adjacencyList.get("Singapore");
-    expect([...canadaEdges.values()]).toEqual(["Singapore"]);
-    expect([...singaporeEdges.values()]).toEqual(["Canada"]);
-    expect(graph.adjacencyList.get("India")).toBe(undefined);
+    const expectedRes = ['Singapore', 'Canada'];
+    graph.addNode('Singapore');
+    graph.addNode('Canada');
+    graph.addNode('India');
+    graph.addEdges('India', 'Canada');
+    graph.addEdges('India', 'Singapore');
+    graph.addEdges('Singapore', 'Canada');
+    graph.removeNode('India');
+    const canadaEdges = graph.nodes.get('Canada');
+    const singaporeEdges = graph.nodes.get('Singapore');
+    expect([...canadaEdges.edges.values()]).toEqual(['Singapore']);
+    expect([...singaporeEdges.edges.values()]).toEqual(['Canada']);
+    expect(graph.nodes.get('India')).toBe(undefined);
   });
 });

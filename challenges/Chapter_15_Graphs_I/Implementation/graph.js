@@ -1,80 +1,63 @@
+export class GraphNode {
+  constructor(val) {
+    this.val = val;
+    this.edges = new Set();
+  }
+}
+
 export class Graph {
   constructor() {
-    this.adjacencyList = new Map();
+    //this.adjacencyList = new Map();
+    this.nodes = new Map();
   }
 
   addNode(data) {
-    if (!this.adjacencyList.has(data)) {
-      this.adjacencyList.set(data, new Set());
+    if (!this.nodes.has(data)) {
+      this.nodes.set(data, new GraphNode(data));
     }
   }
 
-  addEdge(originNode, nodeToConnect) {
-    this.adjacencyList.get(originNode).add(nodeToConnect);
-    this.adjacencyList.get(nodeToConnect).add(originNode);
+  addEdges(parentNode, nodeToConnect) {
+    if (this.nodes.has(parentNode) && this.nodes.has(nodeToConnect)) {
+      const parNode = this.nodes.get(parentNode);
+      parNode.edges.add(nodeToConnect);
+
+      const nodeToConn = this.nodes.get(nodeToConnect);
+      nodeToConn.edges.add(parentNode);
+    }
   }
 
-  removeEdge(originNode, nodeToRemove) {
-    const originConns = this.adjacencyList.get(originNode);
-    originConns.delete(nodeToRemove);
-
-    const nodeToRemoveConns = this.adjacencyList.get(nodeToRemove);
-    nodeToRemoveConns.delete(originNode);
+  removeEdge(parentNode, connectingNode) {
+    if (this.nodes.has(parentNode) && this.nodes.has(connectingNode)) {
+      this.nodes.get(parentNode).edges.delete(connectingNode);
+      this.nodes.get(connectingNode).edges.delete(parentNode);
+    }
   }
 
   removeNode(node) {
-    const edges = this.adjacencyList.get(node);
-    for (let edge of edges) {
-      this.removeEdge(node, edge);
+    if (this.nodes.has(node)) {
+      this.nodes.get(node).edges.forEach((n) => {
+        this.removeEdge(node, n);
+      });
+
+      this.nodes.delete(node);
     }
-
-    this.adjacencyList.delete(node);
   }
 
-  printDFS(node) {
-    const visitedNodes = new Map();
-    const result = [];
-    const adjacencyList = this.adjacencyList;
-
-    (function dfs(node) {
-      if (!adjacencyList.has(node)) {
-        return;
-      }
-
-      visitedNodes.set(node, "VISITING");
-      result.push(node);
-      for (const key of adjacencyList.get(node)) {
-        if (!visitedNodes.has(key)) dfs(key);
-      }
-      visitedNodes.set(node, "VISITED");
-    })(node);
-
-    return result;
-  }
-
-  depthFirstSearch(node, target) {
-    const visitedNodes = new Map();
-    const adjacencyList = this.adjacencyList;
-
-    return (function dfs(node, target) {
-      if (!adjacencyList.has(node)) {
-        return false;
-      }
-
-      if (node === target) {
-        return true;
-      }
-
-      visitedNodes.set(node, "VISITING");
-      for (const key of adjacencyList.get(node)) {
-        if (!visitedNodes.has(key)) {
-          if (dfs(key, target) === true) {
-            return true;
-          }
-        }
-      }
-      visitedNodes.set(node, "VISITED");
-      return false;
-    })(node, target);
+  prinGraph() {
+    this.nodes.forEach((node) => {
+      console.log(`${node.val} => ${[...node.edges].join(' | ')}`);
+    });
   }
 }
+
+// const graph = new Graph();
+
+// graph.addNode('A');
+// graph.addNode('B');
+// graph.addNode('C');
+// graph.addEdges('A', 'B');
+// graph.addEdges('B', 'C');
+// graph.addEdges('A', 'C');
+
+// graph.prinGraph();
