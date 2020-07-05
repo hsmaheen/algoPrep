@@ -1,85 +1,44 @@
-import { Graph } from "../Implementation/graph";
+import { Graph } from '../Implementation/graph';
+import { graphDFS } from './graphDFS';
 
-describe("Graph DFS Should work", () => {
-  it("should be able to find all the nodes in DFS order from A", () => {
+describe('Graph DFS Should work', () => {
+  it('should return false if the node does not exists in the graph', () => {
     const graph = new Graph();
-    graph.addNode("A");
-    graph.addNode("B");
-    graph.addNode("C");
-    graph.addNode("D");
-    graph.addNode("E");
-    graph.addNode("F");
+    graph.addNode('A');
+    graph.addNode('B');
+    graph.addNode('C');
+    graph.addNode('D');
+    graph.addNode('E');
+    graph.addNode('F');
 
-    graph.addEdge("A", "B");
-    graph.addEdge("A", "C");
-    graph.addEdge("B", "D");
-    graph.addEdge("C", "E");
-    graph.addEdge("D", "E");
-    graph.addEdge("D", "F");
-    graph.addEdge("E", "F");
+    graph.addEdges('A', 'B');
+    graph.addEdges('A', 'C');
+    graph.addEdges('B', 'D');
+    graph.addEdges('C', 'E');
+    graph.addEdges('D', 'E');
+    graph.addEdges('D', 'F');
+    graph.addEdges('E', 'F');
 
-    const expected = ["A", "B", "D", "E", "C", "F"];
-    expect(graph.printDFS("A")).toEqual(expected);
+    expect(graphDFS(graph, 'I')).toEqual(false);
   });
 
-  it("should be able to find all the nodes in DFS order from F", () => {
+  it('should return true if the node does not exists in the graph', () => {
     const graph = new Graph();
-    graph.addNode("A");
-    graph.addNode("B");
-    graph.addNode("C");
-    graph.addNode("D");
-    graph.addNode("E");
-    graph.addNode("F");
+    graph.addNode('A');
+    graph.addNode('B');
+    graph.addNode('C');
+    graph.addNode('D');
+    graph.addNode('E');
+    graph.addNode('F');
 
-    graph.addEdge("A", "B");
-    graph.addEdge("A", "C");
-    graph.addEdge("B", "D");
-    graph.addEdge("C", "E");
-    graph.addEdge("D", "E");
-    graph.addEdge("D", "F");
-    graph.addEdge("E", "F");
+    graph.addEdges('A', 'B');
+    graph.addEdges('A', 'C');
+    graph.addEdges('B', 'D');
+    graph.addEdges('C', 'E');
+    graph.addEdges('D', 'E');
+    graph.addEdges('D', 'F');
+    graph.addEdges('E', 'F');
 
-    const expected = ["F", "D", "B", "A", "C", "E"];
-    expect(graph.printDFS("F")).toEqual(expected);
-  });
-
-  it("should return false if the node does not exists in the graph", () => {
-    const graph = new Graph();
-    graph.addNode("A");
-    graph.addNode("B");
-    graph.addNode("C");
-    graph.addNode("D");
-    graph.addNode("E");
-    graph.addNode("F");
-
-    graph.addEdge("A", "B");
-    graph.addEdge("A", "C");
-    graph.addEdge("B", "D");
-    graph.addEdge("C", "E");
-    graph.addEdge("D", "E");
-    graph.addEdge("D", "F");
-    graph.addEdge("E", "F");
-
-    expect(graph.depthFirstSearch("A", "I")).toEqual(false);
-  });
-
-  it("should return true if the node does not exists in the graph", () => {
-    const graph = new Graph();
-    graph.addNode("A");
-    graph.addNode("B");
-    graph.addNode("C");
-    graph.addNode("D");
-    graph.addNode("E");
-    graph.addNode("F");
-
-    graph.addEdge("A", "B");
-    graph.addEdge("A", "C");
-    graph.addEdge("B", "D");
-    graph.addEdge("C", "E");
-    graph.addEdge("D", "E");
-    graph.addEdge("D", "F");
-    graph.addEdge("E", "F");
-
-    expect(graph.depthFirstSearch("A", "F")).toEqual(true);
+    expect(graphDFS(graph, 'F')).toEqual(true);
   });
 });
