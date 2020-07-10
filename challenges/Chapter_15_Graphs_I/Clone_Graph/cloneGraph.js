@@ -1,48 +1,44 @@
-import { Graph } from "../Implementation/graph";
+import { Graph } from '../Implementation/graph';
 
-function cloneGraph(rootNode, adjacencyList) {
-  if (rootNode === null) {
-    return;
+export function cloneGraph(graph) {
+  if (!graph) {
+    return null;
   }
-
-  const cloneMap = new Map();
-  const cloneGraph = new Graph();
+  const nodeMap = new Map();
   const visitedMap = new Map();
+  const clonedGraph = new Graph();
 
-  cloneMap.set(rootNode, rootNode);
-  cloneGraph.addNode(rootNode);
+  for (const node of graph.nodes.values()) {
+    clonedGraph.addNode(node.val);
+    nodeMap.set(node.val, node.val);
+    cloneNode(node, visitedMap, nodeMap, clonedGraph, graph);
+  }
 
-  dfsClone(rootNode, adjacencyList, cloneMap, cloneGraph, visitedMap);
-
-  return cloneGraph;
+  return clonedGraph;
 }
 
-function dfsClone(
-  rooNode,
-  adjacencyList,
-  cloneMap = new Map(),
-  cloneGraph = new Graph(),
-  visitedMap = new Map()
-) {
-  visitedMap.set(rooNode, "VISITING");
-  for (const edge of adjacencyList.get(rooNode)) {
-    if (!cloneMap.has(edge)) {
-      cloneGraph.addNode(edge);
-      cloneMap.set(edge, edge);
+function cloneNode(node, visitedMap, nodeMap, clonedGraph, graph) {
+  visitedMap.set(node.val, 'VISITING');
+  for (const edgeNode of node.edges.values()) {
+    if (!nodeMap.has(edgeNode)) {
+      nodeMap.set(edgeNode, edgeNode);
+      clonedGraph.addNode(edgeNode);
     }
 
-    cloneGraph.addEdge(cloneMap.get(rooNode), cloneMap.get(edge));
-    if (!visitedMap.has(edge)) {
-      dfsClone(edge, adjacencyList, cloneMap, cloneGraph, visitedMap);
+    const clonedNode = nodeMap.get(node.val);
+    const clonedEdge = nodeMap.get(edgeNode);
+
+    clonedGraph.addEdges(clonedNode, clonedEdge);
+    if (!visitedMap.has(edgeNode)) {
+      cloneNode(
+        graph.getNode(edgeNode),
+        visitedMap,
+        nodeMap,
+        clonedGraph,
+        graph
+      );
     }
   }
-  visitedMap.set(rooNode, "VISITED");
-}
 
-const graph = new Graph();
-graph.addNode("Singapore");
-graph.addNode("Canada");
-graph.addNode("India");
-graph.addEdge("India", "Canada");
-graph.addEdge("India", "Singapore");
-const newGraph = cloneGraph("Singapore", graph.adjacencyList);
+  visitedMap.set(node.val, 'VISITED');
+}

@@ -17,6 +17,13 @@ export class Graph {
     }
   }
 
+  getNode(data) {
+    if (this.nodes.has(data)) {
+      return this.nodes.get(data);
+    }
+    return null;
+  }
+
   addEdges(parentNode, nodeToConnect) {
     if (this.nodes.has(parentNode) && this.nodes.has(nodeToConnect)) {
       const parNode = this.nodes.get(parentNode);
@@ -50,14 +57,3 @@ export class Graph {
     });
   }
 }
-
-// const graph = new Graph();
-
-// graph.addNode('A');
-// graph.addNode('B');
-// graph.addNode('C');
-// graph.addEdges('A', 'B');
-// graph.addEdges('B', 'C');
-// graph.addEdges('A', 'C');
-
-// graph.prinGraph();

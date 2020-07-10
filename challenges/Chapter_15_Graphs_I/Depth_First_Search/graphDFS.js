@@ -1,6 +1,7 @@
 import { Graph, GraphNode } from '../Implementation/graph';
 
 function dfsVisit(node, target, memo, graph) {
+  memo.set(node.val, 'VISITING');
   if (node.val === target) {
     return true;
   }
@@ -12,7 +13,6 @@ function dfsVisit(node, target, memo, graph) {
       !memo.has(edgeNode) ||
       (memo.get(edgeNode) !== 'VISITED' && memo.get(edgeNode) !== 'VISITING')
     ) {
-      memo.set(edgeNode, 'VISITING');
       const edgeNodeObj = graph.nodes.get(edgeNode);
       if (dfsVisit(edgeNodeObj, target, memo, graph)) {
         return true;
