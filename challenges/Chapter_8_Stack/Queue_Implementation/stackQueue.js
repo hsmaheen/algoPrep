@@ -20,12 +20,12 @@ export class StackQueue {
       this.deQueueStack.push(node.data);
     }
 
-    const resData = this.deQueueStack.pop();
+    const nodeToRemove = this.deQueueStack.pop();
 
     while (this.deQueueStack.length !== 0) {
       const node = this.deQueueStack.pop();
       this.queueStack.push(node.data);
     }
-    return resData;
+    return nodeToRemove.data;
   }
 }

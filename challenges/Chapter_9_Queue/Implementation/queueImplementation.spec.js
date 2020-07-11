@@ -8,13 +8,13 @@ describe('Basic Queue implementation should work', () => {
     queue.enqueue('C');
     queue.enqueue('D');
     queue.enqueue('E');
-    expect(queue.dequeue().data).toBe('A');
+    expect(queue.dequeue()).toBe('A');
   });
 
   test('queue implementation should work for one element', () => {
     const queue = new Queue();
     queue.enqueue('A');
-    expect(queue.dequeue().data).toBe('A');
+    expect(queue.dequeue()).toBe('A');
   });
 
   test('queue implementation should work 0 elements', () => {

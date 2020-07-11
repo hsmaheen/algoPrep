@@ -38,7 +38,7 @@ export class Queue {
     }
     this.first = this.first.next;
     this.length--;
-    return nodeToRemove;
+    return nodeToRemove.data;
   }
 
   removeFromLast() {
@@ -67,5 +67,9 @@ export class Queue {
     }
 
     return currNode.data;
+  }
+
+  isEmpty() {
+    return this.length === 0;
   }
 }

@@ -1,6 +1,6 @@
 import { Graph, GraphNode } from '../Implementation/graph';
 
-function dfsVisit(node, target, memo, graph) {
+function dfsNode(node, target, memo, graph) {
   memo.set(node.val, 'VISITING');
   if (node.val === target) {
     return true;
@@ -14,7 +14,7 @@ function dfsVisit(node, target, memo, graph) {
       (memo.get(edgeNode) !== 'VISITED' && memo.get(edgeNode) !== 'VISITING')
     ) {
       const edgeNodeObj = graph.nodes.get(edgeNode);
-      if (dfsVisit(edgeNodeObj, target, memo, graph)) {
+      if (dfsNode(edgeNodeObj, target, memo, graph)) {
         return true;
       }
     }
@@ -31,10 +31,45 @@ export function graphDFS(graph, target) {
       !memo.has(node.val) ||
       (memo.get(node.val) !== 'VISITED' && memo.get(node.val) !== 'VISITING')
     ) {
-      if (dfsVisit(node, target, memo, graph)) {
+      if (dfsNode(node, target, memo, graph)) {
         return true;
       }
     }
   }
   return false;
+}
+
+function printDFSNode(node, target, memo, graph, visitedNodes) {
+  memo.set(node.val, 'VISITING');
+  visitedNodes.push(node.val);
+
+  const set = new Set();
+
+  for (const edgeNode of node.edges.values()) {
+    if (
+      !memo.has(edgeNode) ||
+      (memo.get(edgeNode) !== 'VISITED' && memo.get(edgeNode) !== 'VISITING')
+    ) {
+      const edgeNodeObj = graph.nodes.get(edgeNode);
+      printDFSNode(edgeNodeObj, target, memo, graph, visitedNodes);
+    }
+  }
+
+  memo.set(node.val, 'VISITED');
+}
+
+export function printGraphDFS(graph, target) {
+  const memo = new Map();
+  const visitedNodes = [];
+  for (const node of graph.nodes.values()) {
+    if (
+      !memo.has(node.val) ||
+      (memo.get(node.val) !== 'VISITED' && memo.get(node.val) !== 'VISITING')
+    ) {
+      printDFSNode(node, target, memo, graph, visitedNodes);
+    }
+  }
+
+  console.log(...visitedNodes);
+  return visitedNodes;
 }

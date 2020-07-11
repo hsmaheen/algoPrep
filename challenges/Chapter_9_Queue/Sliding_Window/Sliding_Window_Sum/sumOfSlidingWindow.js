@@ -1,4 +1,4 @@
-import { Queue } from "../../Implementation/queueImplementation";
+import { Queue } from '../../Implementation/queueImplementation';
 
 /*
 [1,2,3,4,5] = > 1-2 2-3 3-4 4-5
@@ -20,7 +20,7 @@ export function findSumOfSlidingWindow(arr = [], size) {
   for (let i = 0; i < arr.length; i++) {
     if (currSize == size) {
       sumArr.push(sum);
-      const num = queue.dequeue().data;
+      const num = queue.dequeue();
       sum = sum - num;
       currSize--;
     }
