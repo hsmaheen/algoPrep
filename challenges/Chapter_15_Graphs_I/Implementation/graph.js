@@ -34,6 +34,13 @@ export class Graph {
     }
   }
 
+  addDirectedEdge(parentNode, nodeToConnect) {
+    if (this.nodes.has(parentNode) && this.nodes.has(nodeToConnect)) {
+      const parNode = this.nodes.get(parentNode);
+      parNode.edges.add(nodeToConnect);
+    }
+  }
+
   removeEdge(parentNode, connectingNode) {
     if (this.nodes.has(parentNode) && this.nodes.has(connectingNode)) {
       this.nodes.get(parentNode).edges.delete(connectingNode);
