@@ -6,8 +6,6 @@ function dfsNode(node, target, memo, graph) {
     return true;
   }
 
-  const set = new Set();
-
   for (const edgeNode of node.edges.values()) {
     if (
       !memo.has(edgeNode) ||
