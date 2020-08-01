@@ -64,17 +64,17 @@ function bfsNode(node, visitMap, processQueue, graph, target) {
 
     while (!processQueue.isEmpty()) {
       const currNode = processQueue.dequeue();
+      visitMap.set(currNode.val, 'VISITING');
       if (currNode.val === target) {
         return true;
       }
       for (const edge of currNode.edges.values()) {
         const edgeNodeObj = graph.getNode(edge);
         if (!visitMap.has(edgeNodeObj.val)) {
-          visitMap.set(edgeNodeObj.val, 'VISITING');
           processQueue.enqueue(edgeNodeObj);
-          visitMap.set(edgeNodeObj.val, 'VISITED');
         }
       }
+      visitMap.set(currNode.val, 'VISITED');
     }
 
     visitMap.set(node.val, 'VISITED');
