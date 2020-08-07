@@ -17,4 +17,15 @@ describe('Course Schedule Algo should work', () => {
     const response = findCourseSchedule(2, [[1, 0]]);
     expect(response).toEqual(ans);
   });
+
+  test('Should return the correct order of courses are in the form of letters', () => {
+    const ans = ['A', 'B', 'C', 'D'];
+    const response = findCourseSchedule(4, [
+      ['D', 'C'],
+      ['B', 'A'],
+      ['C', 'A'],
+      ['D', 'B'],
+    ]);
+    expect(response).toEqual(ans);
+  });
 });

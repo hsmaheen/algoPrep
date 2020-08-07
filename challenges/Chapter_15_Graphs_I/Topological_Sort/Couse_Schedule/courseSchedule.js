@@ -1,45 +1,39 @@
 export function findCourseSchedule(numCourses, prerequisites) {
   // Build graph
-  const adj = [...Array(numCourses)].map((r) => []);
-  for (let [u, v] of prerequisites) {
-    adj[v].push(u);
-  }
 
-  return dfs(adj, numCourses);
-}
+  const adj = new Map();
 
-function dfs(graph, numCourses) {
-  const data = [...Array(numCourses)].map((r, idx) => [idx, '']);
-  const visitedMap = new Map(data);
-  const stack = [];
-
-  for (let i = 0; i < graph.length; i++) {
-    if (visitedMap.get(i) !== 'VISITED') {
-      dfsNode(i, graph, visitedMap, stack);
+  for (let [edge, node] of prerequisites) {
+    adj.has(node) ? adj.get(node).push(edge) : adj.set(node, [edge]);
+    if (!adj.has(edge)) {
+      adj.set(edge, []);
     }
   }
+
+  const stack = [];
+  const visitedMap = new Map();
+
+  for (const node of adj.keys()) {
+    getTopoNode(node, adj, visitedMap, stack);
+  }
+
   return stack.reverse();
 }
 
-function dfsNode(node, graph, visitedMap, stack) {
-  visitedMap.set(node, 'VISITING');
+function getTopoNode(node, graph, visitedMap, stack) {
+  if (!visitedMap.has(node)) {
+    visitedMap.set(node, 'VISITING');
 
-  for (const edge of graph[node]) {
-    if (
-      visitedMap.get(edge) !== 'VISITING' &&
-      visitedMap.get(edge) !== 'VISITED'
-    ) {
-      dfsNode(edge, graph, visitedMap, stack);
+    for (const edge of graph.get(node).values()) {
+      if (
+        !graph.has(edge) ||
+        (graph.get(edge) !== 'VISITING' && graph.get(edge) !== 'VISITED')
+      ) {
+        getTopoNode(edge, graph, visitedMap, stack);
+      }
     }
+
+    visitedMap.set(node, 'VISITED');
+    stack.push(node);
   }
-
-  visitedMap.set(node, 'VISITED');
-  stack.push(node);
 }
-
-findCourseSchedule(4, [
-  [1, 0],
-  [2, 0],
-  [3, 1],
-  [3, 2],
-]);
