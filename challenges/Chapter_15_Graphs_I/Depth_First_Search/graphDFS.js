@@ -71,3 +71,30 @@ export function printGraphDFS(graph, target) {
   console.log(...visitedNodes);
   return visitedNodes;
 }
+
+//Stack Apprach
+
+// function dfsNode(node, graph, visitedMap) {
+//   const stack = [];
+//   const result = [];
+//   stack.push(node);
+//   while (stack.length !== 0) {
+//     const currNode = stack.pop();
+
+//     result.push(currNode);
+
+//     if (!visitedMap[currNode]) {
+//       visitedMap[currNode] = 'VISITED';
+
+//       const edges = graph[currNode];
+
+//       for (const edge of graph[currNode]) {
+//         if (!visitedMap[edge]) {
+//           stack.push(edge);
+//         }
+//       }
+//     }
+//   }
+
+//   return result;
+// }
