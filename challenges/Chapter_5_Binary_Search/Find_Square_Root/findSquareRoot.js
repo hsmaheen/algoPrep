@@ -14,22 +14,31 @@ export function getSquareRoot(num) {
     return num;
   }
 
-  let start = 0;
+  let start = 1;
   let end = Math.floor(num / 2);
 
   while (start <= end) {
     const mid = start + Math.floor((end - start) / 2);
     const square = mid * mid;
 
-    if (square > num) {
-      end = mid - 1;
-    } else if (square < num) {
+    if (square <= num) {
       if ((mid + 1) * (mid + 1) > num) {
         return mid;
       }
       start = mid + 1;
     } else {
-      return mid;
+      end = mid - 1;
     }
+
+    // if (square > num) {
+    //   end = mid - 1;
+    // } else if (square < num) {
+    //   if ((mid + 1) * (mid + 1) > num) {
+    //     return mid;
+    //   }
+    //   start = mid + 1;
+    // } else {
+    //   return mid;
+    // }
   }
 }
