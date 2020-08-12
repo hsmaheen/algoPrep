@@ -16,9 +16,10 @@ export function findPeak(arr = []) {
     const right =
       mid === arr.length - 1 ? Number.NEGATIVE_INFINITY : arr[mid + 1];
 
-    if (arr[mid] > left && arr[mid] > right) {
-      return mid;
-    } else if (arr[mid] > left && arr[mid] < right) {
+    if (arr[mid] > left) {
+      if (arr[mid] > right) {
+        return mid;
+      }
       start = mid + 1;
     } else {
       end = mid - 1;
